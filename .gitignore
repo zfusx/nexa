@@ -1,0 +1,108 @@
+# Dependencies and build output
+node_modules/
+.astro/
+dist/
+build/
+out/
+target/
+bin/
+obj/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.p12
+*.keystore
+*.jks
+
+# IDE and editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Language-specific caches
+__pycache__/
+*.pyc
+*.pyo
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+venv/
+.venv/
+
+# Go
+vendor/
+
+# Rust
+target/
+
+# Java/Kotlin/Android
+*.class
+*.jar
+*.war
+*.aar
+.gradle/
+local.properties
+
+# .NET
+packages/
+
+# JavaScript/TypeScript
+.next/
+.nuxt/
+.output/
+.cache/
+.parcel-cache/
+coverage/
+*.tsbuildinfo
+
+# Docker
+docker-compose.override.yml
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Test output
+coverage/
+.nyc_output/
+test-results/
+
+# Local research evidence and large source media
+research_artifacts/
+othersite/
+
+# Internal technical source documents are local-only until publication review
+white_paper/
+
+# Generated handoff history is local-only; keep only the current reviewed package
+output/handoff/*
+!output/handoff/Nexa团队交付_v0.5.zip

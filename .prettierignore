@@ -1,0 +1,8 @@
+dist/
+.astro/
+node_modules/
+research_artifacts/
+othersite/
+white_paper/
+docs/templates/
+package-lock.json

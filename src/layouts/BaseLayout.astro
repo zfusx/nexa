@@ -1,0 +1,91 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  darkHeader?: boolean;
+  noindex?: boolean;
+}
+
+const {
+  title = "Nexa｜对命运好奇，不等于把人生交给命运",
+  description = "Nexa 以八字理解出发点，以易经理解变化，再由 AI 把答案背后的为什么说清楚，把最后的选择留给你。",
+  darkHeader = true,
+  noindex = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex,follow" />}
+    <meta name="theme-color" content="#0b0620" />
+    <link
+      rel="preload"
+      href="/fonts/InterVariable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_CN" />
+    <link rel="icon" type="image/png" href="/brand/nexa-mark.png" />
+    <title>{title}</title>
+  </head>
+  <body data-header={darkHeader ? "dark" : "light"}>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/" aria-label="Nexa 首页">
+          <img
+            class="brand-symbol"
+            src="/brand/nexa-mark.png"
+            width="34"
+            height="34"
+            alt=""
+          />
+          <span>Nexa</span>
+        </a>
+        <nav class="desktop-nav" aria-label="主导航">
+          <a href="/#experience">体验</a>
+          <a href="/quiz">测评</a>
+          <a href="/how-it-works">原理</a>
+          <a href="/story">关于</a>
+          <a href="/whitepaper">白皮书</a>
+          <a class="nav-cta" href="/#experience">开始体验</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <a class="brand" href="/">
+          <img
+            class="brand-symbol"
+            src="/brand/nexa-mark.png"
+            width="34"
+            height="34"
+            alt=""
+          />
+          <span>Nexa</span>
+        </a>
+        <div class="footer-links">
+          <a href="/privacy">隐私</a>
+          <a href="/terms">使用边界</a>
+          <a href="/quiz">测评</a>
+          <a href="/whitepaper">技术白皮书</a>
+          <a href="/design-system">设计参考</a>
+          <span>产品设计演示</span>
+          <span>© 2026 Nexa</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

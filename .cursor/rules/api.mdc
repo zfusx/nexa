@@ -1,0 +1,57 @@
+---
+description: API contract management, interface-first changes, and endpoint documentation.
+globs:
+  - "API_CONTRACT.md"
+  - "**/*api*"
+  - "**/*route*"
+  - "**/*handler*"
+  - "**/*controller*"
+  - "**/*schema*"
+  - "**/*types*"
+  - "**/*model*"
+  - "**/*dto*"
+alwaysApply: false
+---
+
+# API Contract Management
+
+## Interface-First Rule
+
+When adding or modifying features that affect external or cross-module
+contracts:
+
+1. Define the interface first in API_CONTRACT.md.
+2. Include types, routes or events, auth rules, request and response
+   examples, error behavior, versioning, and compatibility notes.
+3. Present the structure for human approval when the change is public,
+   breaking, database-backed, protocol-level, or spans multiple clients
+   or services.
+4. Implement only after approval for P0 cases. For P1 internal additions,
+   update the contract and implementation in the same pass.
+
+## Contract Completeness
+
+Every endpoint must document:
+- Purpose, auth requirements, roles or scopes.
+- Request and response shapes with valid JSON examples.
+- Error codes and error body shape.
+- Compatibility status (breaking/non-breaking/new).
+- Owner.
+
+Every event contract must document:
+- Direction, auth, compatibility, delivery semantics.
+- Payload shape with valid JSON example.
+
+## Breaking Changes
+
+- Breaking changes require explicit migration notes.
+- List affected clients in the Compatibility Notes table.
+- Breaking API changes are P0 and require human approval.
+
+## Verification
+
+API changes must include:
+- Contract tests or integration tests.
+- Error-path verification.
+- Auth and authorization verification.
+- API_CONTRACT.md update in the same task.

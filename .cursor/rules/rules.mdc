@@ -1,0 +1,69 @@
+---
+description: Guidelines for creating and maintaining Cursor rules and .rulesrc.yaml.
+globs:
+  - "AGENTS.md"
+  - "AI_DIRECTIVES.md"
+  - "TOOLING_GUIDE.md"
+  - ".rulesrc.yaml"
+  - ".cursor/rules/**"
+alwaysApply: false
+---
+
+# Rule Authoring
+
+## Rule File Format
+
+Every .mdc rule file must have YAML frontmatter with:
+- description: short purpose and when to use the rule.
+- globs: file patterns that trigger the rule (optional).
+- alwaysApply: true only for short, universal workflow rules.
+
+Example:
+
+```yaml
+---
+description: Short purpose and when to use the rule.
+globs:
+  - "**/*api*"
+alwaysApply: false
+---
+```
+
+## Sizing Guidelines
+
+- Keep each rule file under 160 lines.
+- Keep AGENTS.md under 60 lines.
+- Use alwaysApply: true sparingly — only for the workflow rule.
+- Move detailed references to doc files, not rules.
+
+## Rule Hierarchy
+
+1. AI_DIRECTIVES.md overrides all other instruction sources.
+2. AGENTS.md overrides .cursor/rules/*.mdc.
+3. Scoped rules override inline code comments.
+4. If two rules conflict, follow the more restrictive one and record the
+   conflict in CURRENT_TASKS.md.
+
+## .rulesrc.yaml Maintenance
+
+- Update selection globs when new file patterns emerge.
+- Update enabled_areas when the project scope changes.
+- Verify that every load path points to an existing .mdc file.
+- Use conditional document loading to reduce context cost.
+
+## Adding New Rules
+
+1. Identify the domain and file patterns.
+2. Check whether an existing rule already covers the area.
+3. Create the .mdc file with proper frontmatter.
+4. Add the selection entry in .rulesrc.yaml.
+5. Verify the frontmatter parses as valid YAML.
+6. Keep the rule under 160 lines.
+
+## Anti-Patterns
+
+- Do not duplicate content between AGENTS.md and AI_DIRECTIVES.md.
+- Do not repeat risk-tier definitions in rule files — reference
+  AI_DIRECTIVES.md instead.
+- Do not use alwaysApply: true for domain-specific rules.
+- Do not exceed 160 lines; split into separate rules if needed.

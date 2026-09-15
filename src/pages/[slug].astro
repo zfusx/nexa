@@ -1,0 +1,197 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+interface Section {
+  title: string;
+  paragraphs?: string[];
+  bullets?: string[];
+  note?: string;
+}
+
+interface PageData {
+  slug: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  intro: string;
+  sections: Section[];
+}
+
+export function getStaticPaths() {
+  const pages: PageData[] = [
+    {
+      slug: "how-it-works",
+      eyebrow: "HOW NEXA THINKS",
+      title: "从传统知识，到可以追问的回答",
+      description:
+        "了解 Nexa 如何组织八字、易学与 AI 推理，以及我们如何说明答案的边界。",
+      intro:
+        "Nexa 不把传统术语排成一张看似复杂的表，也不让 AI 凭语感编故事。我们的工作，是把计算、传统解释和现实建议分开处理，再把它们重新组织成你能理解、能质疑的答案。",
+      sections: [
+        {
+          title: "第一层：把复杂关系变成稳定结构",
+          paragraphs: [
+            "八字与易学包含大量概念、条件、相互关系和时间变化。我们先定义这些关系如何进入同一套计算过程，避免同一输入因为表达顺序不同而得到彼此冲突的结果。",
+          ],
+        },
+        {
+          title: "第二层：让传统解释有依据可循",
+          paragraphs: [
+            "系统需要说明某个判断来自哪些关系、哪些条件仍有分歧。传统体系内部的一致，不等于现实世界已被科学证实；Nexa 会尽量把这两件事说清楚。",
+          ],
+        },
+        {
+          title: "第三层：AI 负责解释，不负责装神秘",
+          paragraphs: [
+            "AI 把复杂推理翻译成自然语言，帮助你追问原因、比较可能性、形成下一步。它不应该制造必然结论，也不替代医疗、法律、财务与心理专业服务。",
+          ],
+          note: "我们希望每个重要结论都能回答三个问题：依据是什么？还有什么不确定？我可以如何验证？",
+        },
+      ],
+    },
+    {
+      slug: "story",
+      eyebrow: "WHY NEXA EXISTS",
+      title: "对命运好奇，不等于把人生交给命运",
+      description:
+        "Nexa 的品牌故事：认真回应人的困惑，同时把选择权留给每一个人。",
+      intro:
+        "人会在关系变化、职业转折和未知来临时寻找线索。这不总是迷信，很多时候只是因为一个问题太重、太乱，很难独自把它看清。",
+      sections: [
+        {
+          title: "我们不想再做一个宣布答案的工具",
+          paragraphs: [
+            "许多产品先放大不安，再把一个被锁住的结论卖给你。Nexa 选择另一条路：先理解问题，再解释推理；允许追问，也承认边界。",
+          ],
+        },
+        {
+          title: "认真回答，本身就是一种尊重",
+          paragraphs: [
+            "不敷衍人的期待，不利用人的脆弱。一个好的回答不只让人短暂安心，还应该帮助他辨认事实、承担选择、重新开始行动。",
+          ],
+        },
+        {
+          title: "你始终是故事里的主角",
+          paragraphs: [
+            "Nexa 可以是一盏灯、一张地图、一个擅长解释的同行者，但不能成为替你驾驶的人。未来并非等待揭晓的判词，而是在理解与行动中继续形成的生活。",
+          ],
+        },
+      ],
+    },
+    {
+      slug: "privacy",
+      eyebrow: "PRIVACY PRINCIPLES",
+      title: "只在需要时，使用必要的信息",
+      description: "Nexa 主站演示版的隐私原则。",
+      intro:
+        "当前主站微体验在浏览器内运行，不上传你的选择，也不要求输入出生日期、电子邮箱、电话号码或付款信息。正式产品的数据处理说明将以届时公布的隐私政策为准。",
+      sections: [
+        {
+          title: "我们的原则",
+          bullets: [
+            "先说明用途，再请求信息",
+            "能少收集，就不多收集",
+            "敏感信息与一般浏览数据分开对待",
+            "提供可理解的数据管理与删除入口",
+            "不把私密提问用于制造定向恐惧",
+          ],
+        },
+        {
+          title: "关于当前演示",
+          paragraphs: [
+            "首页的 60 秒体验只用于展示 Nexa 的回答方式。刷新页面后，选择不会被保留。点击前往现有产品时，将适用现有产品自己的隐私与账户规则。",
+          ],
+        },
+      ],
+    },
+    {
+      slug: "terms",
+      eyebrow: "RESPONSIBLE USE",
+      title: "Nexa 提供视角，不提供人生判决",
+      description: "Nexa 的使用边界与负责任使用原则。",
+      intro:
+        "Nexa 的内容用于自我反思、文化探索和一般性参考。它不能替代你对现实证据的判断，也不能替代合格专业人士的意见。",
+      sections: [
+        {
+          title: "请不要用 Nexa 替代",
+          bullets: [
+            "医疗诊断、治疗与心理危机干预",
+            "法律意见、合同判断与争议处置",
+            "投资、借贷、保险等重大财务决策",
+            "人身安全、暴力风险或紧急事件处理",
+            "对他人的监视、操控与歧视性决定",
+          ],
+        },
+        {
+          title: "面对重要决定时",
+          paragraphs: [
+            "把 Nexa 的回答当作一个可以检验的角度，而不是唯一依据。寻找现实证据、咨询可信的人，并给自己保留改变决定的空间。",
+          ],
+          note: "如果你或他人正处于即时危险中，请优先联系当地紧急服务或可以及时介入的专业支持。",
+        },
+      ],
+    },
+  ];
+
+  return pages.map((page) => ({
+    params: { slug: page.slug },
+    props: { page },
+  }));
+}
+
+interface Props {
+  page: PageData;
+}
+const { page } = Astro.props;
+---
+
+<BaseLayout title={`${page.title}｜Nexa`} description={page.description}>
+  <section class="content-page">
+    <article class="container">
+      <p class="eyebrow">{page.eyebrow}</p>
+      <h1>{page.title}</h1>
+      <p class="page-intro">{page.intro}</p>
+      {
+        page.sections.map((section) => (
+          <section>
+            <h2>{section.title}</h2>
+            {section.paragraphs?.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+            {section.bullets && (
+              <ul>
+                {section.bullets.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            )}
+            {section.note && <div class="page-note">{section.note}</div>}
+          </section>
+        ))
+      }
+      <div style="margin-top: 60px">
+        <a class="button button-primary" href="/#experience"
+          >先体验 Nexa 的回答方式</a
+        >
+      </div>
+    </article>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-intro {
+    margin: 0 0 70px;
+    color: var(--ink);
+    font-family: var(--font-heading);
+    font-size: clamp(1.2rem, 2.1vw, 1.55rem);
+    line-height: 1.8;
+  }
+  ul {
+    display: grid;
+    gap: 13px;
+    padding-left: 1.25rem;
+  }
+  li::marker {
+    color: var(--violet);
+  }
+</style>

@@ -1,0 +1,482 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ExperienceDemo from "../components/ExperienceDemo";
+import NexaIcon from "../components/NexaIcon.astro";
+
+const colors = [
+  { name: "星夜底色", token: "--night-deep", value: "#0b0620" },
+  { name: "产品页底", token: "--night", value: "#110630" },
+  { name: "功能主卡", token: "--night-raised", value: "#21124b" },
+  { name: "辅助表面", token: "--surface-low", value: "#171032" },
+  { name: "纯白正文", token: "--ink", value: "#ffffff" },
+  { name: "主次文字", token: "--ink-soft", value: "#c9c2e4" },
+  { name: "交互紫", token: "--violet", value: "#8871ff" },
+  { name: "淡紫强调", token: "--violet-light", value: "#c8a7ff" },
+];
+
+const icons = [
+  { name: "spark", label: "星芒", use: "品牌强调" },
+  { name: "orbit", label: "轨道", use: "计算与方法" },
+  { name: "compass", label: "罗盘", use: "方向与引导" },
+  { name: "chart", label: "图表", use: "结果与趋势" },
+  { name: "shield", label: "盾牌", use: "隐私与边界" },
+  { name: "document", label: "文档", use: "报告与白皮书" },
+  { name: "refresh", label: "刷新", use: "重新生成" },
+  { name: "share", label: "分享", use: "分享结果" },
+  { name: "voice", label: "朗读", use: "语音播放" },
+  { name: "arrow", label: "箭头", use: "继续与跳转" },
+] as const;
+---
+
+<BaseLayout
+  title="设计参考与组件｜Nexa"
+  description="Nexa 演示站的视觉、组件、交互与状态参考，供设计及程序团队协作。"
+  noindex
+>
+  <section class="spec-cover">
+    <div class="container">
+      <p class="eyebrow">NEXA / 团队设计参考 / v0.5</p>
+      <h1>让设计与实现，<br />说同一种语言。</h1>
+      <p class="spec-lede">
+        这页把演示站的视觉与行为放在一起。可以直接查看组件，也可以走完三题体验，作为后续产品化的共同基线。
+      </p>
+      <div class="spec-status">
+        <span>已实现：静态主站与微体验</span><span
+          >待接入：真实计算、账户与支付</span
+        >
+      </div>
+      <nav class="spec-nav" aria-label="设计参考目录">
+        <a href="#foundation">01 基础视觉</a><a href="#components">02 组件</a><a
+          href="#interaction">03 交互</a
+        ><a href="#states">04 未来状态</a><a href="#handover">05 交付要求</a>
+      </nav>
+    </div>
+  </section>
+  <section class="spec-section container" id="foundation">
+    <p class="eyebrow">01 / 基础视觉</p>
+    <h2>同一片星夜，同一种 Nexa。</h2>
+    <p class="spec-lede">
+      对齐 asknexa.me 的冷紫底色、主/辅卡层级、紫红渐变与无衬线排版。
+      顶部使用产品站同源标志、星芒与主视觉；阅读页仍以窄行宽和宽松行距保持清晰。
+    </p>
+    <div class="swatches">
+      {
+        colors.map((color) => (
+          <div class="swatch">
+            <>
+              <div style={`background:${color.value}`} aria-hidden="true" />
+              <strong>{color.name}</strong>
+              <code>{color.token}</code>
+              <span>{color.value}</span>
+            </>
+          </div>
+        ))
+      }
+    </div>
+    <div class="type-grid">
+      <div class="spec-panel">
+        <span class="spec-label">标题 / Inter 与中文无衬线</span><p
+          class="type-title"
+        >
+          对命运好奇，<br />也保留自己的判断。
+        </p>
+      </div>
+      <div class="spec-panel">
+        <span class="spec-label">正文 / 系统无衬线</span><p>
+          把复杂的关系解释清楚，让每一段文字都有足够的呼吸空间。正文不依赖背景装饰才能被理解。
+        </p><p class="muted">
+          Inter 字体由本站提供；中文使用苹方、微软雅黑或 Noto Sans CJK
+          SC。标题与正文共享无衬线语言。
+        </p>
+      </div>
+    </div>
+    <div class="icon-language">
+      <div>
+        <p class="spec-label">SVG 图标 / 24 × 24</p>
+        <h3>装饰有气质，操作有共识。</h3>
+        <p class="muted">
+          星芒、轨道和罗盘承载 Nexa
+          的品牌语气；箭头、刷新、分享等操作图标保持克制、熟悉。默认线宽
+          1.65px，继承文字颜色；纯装饰图标对辅助技术隐藏，有独立含义时必须提供可读名称。
+        </p>
+      </div>
+      <div class="icon-grid">
+        {
+          icons.map((icon) => (
+            <div class="icon-sample">
+              <span>
+                <NexaIcon name={icon.name} size={28} />
+              </span>
+              <strong>{icon.label}</strong>
+              <small>{icon.use}</small>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <p class="spec-footnote">
+      全站容器最大
+      1180px；手机单列阅读。颜色只是设计令牌，不是完整可访问性认证；最终组合仍需检查对比度、焦点与缩放。
+    </p>
+  </section>
+  <section class="spec-section container" id="components">
+    <p class="eyebrow">02 / 组件 C02 · C03 · C08</p>
+    <h2>动作明确，信息层次稳定。</h2>
+    <div class="spec-panel">
+      <p class="spec-label">真实链接：可点击、可键盘聚焦</p>
+      <div class="spec-actions">
+        <a class="button button-primary" href="/#experience">主动作：体验</a><a
+          class="button button-secondary"
+          href="/whitepaper">次动作：了解方法</a
+        ><button class="button spec-disabled" type="button" disabled
+          >不可用状态示例</button
+        >
+      </div>
+      <p class="spec-footnote">
+        禁用示例不发送请求。生产提交中的按钮与重复提交保护，需要真实任务契约后再实现。
+      </p>
+    </div>
+    <div class="type-grid">
+      <a class="question-card warm-card" href="/#experience"
+        ><span class="question-index">C03 / 问题入口</span><div>
+          <h3>有些选择，需要先看清问题。</h3><p>
+            整卡进入体验区域，不自动替用户选择答案。
+          </p>
+        </div><span class="question-arrow" aria-hidden="true">↗</span></a
+      >
+      <div class="spec-panel faq-list">
+        <details>
+          <summary
+            >什么是一个完整的状态稿？<span aria-hidden="true">＋</span></summary
+          ><p>
+            除了默认页面，还需要描述触发动作、等待、失败、数据不足与恢复路径。这条
+            FAQ 可实际展开和收起。
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+  <section class="spec-dark" id="interaction">
+    <div class="container">
+      <p class="eyebrow">03 / 可操作的交互 S0-S3</p>
+      <h2>三道题，一个完整的免费视角。</h2>
+      <p class="spec-lede">
+        与首页使用同一个组件。依次选择主题、帮助、感受；可以返回改选、查看结果和重新体验。全部在浏览器内运行。
+      </p>
+      <div class="demo-spec">
+        <ExperienceDemo client:load /><noscript
+          ><p>
+            微体验需要 JavaScript。你仍可<a href="/how-it-works"
+              >阅读 Nexa 方法说明</a
+            >。
+          </p></noscript
+        >
+      </div>
+      <p class="spec-footnote">
+        这不是命理计算或 AI
+        实时推理。没有网络计算等待，也没有注册、付款或资料保存。
+      </p>
+    </div>
+  </section>
+  <section class="spec-section container" id="states">
+    <p class="eyebrow">04 / 生产版状态设计建议</p>
+    <h2>不仅画成功，也画如何继续。</h2>
+    <p class="spec-lede">
+      下面是静态文案和布局样例，不代表当前存在任务、订单或服务异常。正式状态及恢复动作需与核心团队确认。
+    </p>
+    <div class="state-grid">
+      <article class="state-card">
+        <span class="state-label">样例 / 等待结果</span><h3>
+          正在整理计算结果
+        </h3><p>
+          页面会在服务确认后更新。没有可信的进度时，不显示虚构百分比。
+        </p><span class="state-next">设计要求：明确等待与退出后的处理</span>
+      </article>
+      <article class="state-card">
+        <span class="state-label">样例 / 资料待确认</span><h3>
+          还有一项资料需要你确认
+        </h3><p>
+          说明缺少什么、为什么需要，以及不知道时还能提供哪些有限结果。
+        </p><span class="state-next">设计要求：允许返回修改，不伪造资料</span>
+      </article>
+      <article class="state-card">
+        <span class="state-label">样例 / 连接中断</span><h3>
+          暂时没有收到最新结果
+        </h3><p>
+          网络超时不等于任务失败。先查询原任务，再决定是否需要重试。
+        </p><span class="state-next">设计要求：避免重复计算或重复收费</span>
+      </article>
+      <article class="state-card">
+        <span class="state-label">样例 / 无法生成</span><h3>
+          这次暂时无法提供有效解读
+        </h3><p>
+          说明限制与可用的恢复方式，不用演示文案补成一份“成功报告”。
+        </p><span class="state-next">设计要求：让失败可理解、可恢复</span>
+      </article>
+    </div>
+  </section>
+  <section class="spec-section container" id="handover">
+    <p class="eyebrow">05 / 从参考到正式产品</p>
+    <h2>设计稿、契约与验收，一起交付。</h2>
+    <div class="type-grid">
+      <div class="spec-panel">
+        <h3>设计团队</h3><p>
+          交付正式令牌、组件
+          variants、手机/平板/桌面稿、完整状态、交互和资产标注。这页不是已经完成的
+          Figma 文件。
+        </p>
+      </div><div class="spec-panel">
+        <h3>程序团队</h3><p>
+          保留可读的静态内容，按确认的服务契约替换演示计算。补齐身份、权限、任务恢复、支付幂等与数据管理后，再验收真实业务。
+        </p>
+      </div>
+    </div>
+    <p class="spec-footnote">
+      团队交付包另含页面规格、设计规范、接入说明、验收用例和待确认决策。内部技术资料、凭据与研究原始素材不会在此页面公开。
+    </p>
+    <div class="spec-actions">
+      <a class="button button-primary" href="/">返回主站演示</a><a
+        class="button button-secondary"
+        href="/whitepaper">阅读方法白皮书</a
+      >
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .spec-cover {
+    padding: 145px 0 55px;
+    background: var(--night);
+    color: var(--ink);
+  }
+  .spec-cover .eyebrow,
+  .spec-dark .eyebrow {
+    color: var(--violet-light);
+  }
+  h1,
+  h2 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1.3;
+  }
+  h1 {
+    font-size: clamp(2.3rem, 5.5vw, 4.8rem);
+    margin: 18px 0;
+  }
+  h2 {
+    font-size: clamp(1.85rem, 3.5vw, 3rem);
+    margin: 0 0 20px;
+  }
+  h3 {
+    font-size: 1.3rem;
+    line-height: 1.5;
+  }
+  .spec-lede {
+    max-width: 740px;
+    font-size: 1.08rem;
+    line-height: 1.9;
+  }
+  .spec-cover .spec-lede,
+  .spec-dark .spec-lede {
+    color: #d1c8e3;
+  }
+  .spec-status,
+  .spec-actions,
+  .spec-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .spec-status {
+    margin-block: 28px;
+    font-size: 0.85rem;
+    color: #d1c8e3;
+  }
+  .spec-status span {
+    border: 1px solid #4c3d66;
+    border-radius: 30px;
+    padding: 8px 14px;
+  }
+  .spec-nav {
+    margin-top: 35px;
+    padding-top: 22px;
+    border-top: 1px solid #4c3d66;
+  }
+  .spec-nav a {
+    padding: 10px 8px;
+    color: #d1c8e3;
+  }
+  .spec-nav a:hover {
+    color: white;
+  }
+  .spec-section {
+    padding-block: 75px;
+    border-bottom: 1px solid var(--line);
+  }
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin: 35px 0;
+  }
+  .swatch {
+    display: grid;
+    gap: 7px;
+    min-width: 0;
+    font-size: 0.85rem;
+  }
+  .swatch > div {
+    height: 100px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+  }
+  .swatch code {
+    font-size: 0.8rem;
+    overflow-wrap: anywhere;
+  }
+  .type-grid,
+  .state-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin: 28px 0;
+  }
+  .icon-language {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.3fr);
+    gap: 32px;
+    align-items: start;
+    margin: 36px 0 12px;
+    padding: 30px;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: linear-gradient(145deg, #21124b 0%, #0e0620 100%);
+  }
+  .icon-language h3 {
+    margin: 10px 0;
+  }
+  .icon-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .icon-sample {
+    display: grid;
+    justify-items: center;
+    gap: 7px;
+    min-width: 0;
+    padding: 14px 8px;
+    border: 1px solid rgba(201, 177, 255, 0.12);
+    border-radius: 14px;
+    background: rgba(136, 113, 255, 0.06);
+    text-align: center;
+  }
+  .icon-sample span {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    color: var(--violet-light);
+    background: rgba(136, 113, 255, 0.12);
+  }
+  .icon-sample strong {
+    font-size: 0.83rem;
+  }
+  .icon-sample small {
+    color: var(--ink-soft);
+    font-size: 0.7rem;
+  }
+  .spec-panel,
+  .state-card {
+    padding: 30px;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: var(--white);
+  }
+  .spec-label {
+    font-size: 0.8rem;
+    color: var(--violet-light);
+  }
+  .type-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    line-height: 1.5;
+  }
+  .muted,
+  .spec-footnote {
+    color: var(--ink-soft);
+    line-height: 1.85;
+  }
+  .spec-footnote {
+    margin-top: 25px;
+    font-size: 0.88rem;
+    max-width: 900px;
+  }
+  .spec-disabled {
+    background: #21124b;
+    color: var(--ink-soft);
+    cursor: not-allowed;
+  }
+  .spec-disabled:hover {
+    transform: none;
+  }
+  .spec-dark {
+    padding-block: 75px;
+    background: var(--night);
+    color: var(--ink);
+  }
+  .spec-dark .spec-footnote {
+    color: #d1c8e3;
+  }
+  .demo-spec {
+    max-width: 850px;
+    margin-top: 40px;
+  }
+  .demo-spec a {
+    text-decoration: underline;
+  }
+  .state-card {
+    border-top: 3px solid var(--violet);
+  }
+  .state-label {
+    font-size: 0.8rem;
+    color: var(--violet-light);
+  }
+  .state-next {
+    display: block;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+  }
+  @media (max-width: 760px) {
+    .swatches {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .type-grid,
+    .state-grid,
+    .icon-language {
+      grid-template-columns: 1fr;
+    }
+    .icon-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .spec-panel,
+    .state-card {
+      padding: 23px;
+    }
+  }
+  @media (max-width: 380px) {
+    .swatches {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .spec-actions .button {
+      width: 100%;
+    }
+    .icon-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

@@ -1,0 +1,58 @@
+---
+description: Proportional testing, verification matrix, and build validation.
+globs:
+  - "TOOLING_GUIDE.md"
+  - "**/*test*"
+  - "**/*spec*"
+  - "package.json"
+  - "pyproject.toml"
+  - "go.mod"
+  - "Cargo.toml"
+  - ".github/workflows/**"
+alwaysApply: false
+---
+
+# Testing and Verification
+
+## Proportional Verification
+
+Use the smallest verification set that meaningfully covers the risk.
+
+- Docs only: markdown review and whitespace check.
+- Template or rule docs: placeholder review, frontmatter check.
+- API: tests for changed endpoint or schema, contract update.
+- Backend: formatter, linter, unit tests, build.
+- Frontend: formatter, linter, unit tests, build, visual check.
+- Mobile: unit tests, debug build, signing check for release.
+- Database: migration dry run, rollback note, backup plan.
+- Infrastructure: config validation, dry run, rollback note.
+- Secrets: Gitleaks, TruffleHog when needed.
+- Large refactor: CodeGraph before/after, focused tests.
+
+## Escalation by Risk Tier
+
+- P0: explicit human approval and full relevant verification.
+- P1: targeted tests or clear explanation when tests are unavailable.
+- P2: lightweight checks only.
+
+## Zero Placeholder Rule
+
+Do not leave placeholder code, fake tests, partial functions, empty
+handlers, or dummy return values in production code. If context is
+insufficient, halt and report what is missing.
+
+## Verification Checkpoint
+
+After each bounded pass:
+1. Review git diff.
+2. Run the relevant checks from the verification matrix.
+3. Record results in WORKLOG.md.
+4. Fix failures before continuing.
+
+## Build Validation
+
+Before marking work done:
+- The project must build successfully.
+- All existing tests must pass.
+- Secret scanning must pass when relevant files were touched.
+- git diff --check must pass when in Git.

@@ -1,0 +1,58 @@
+---
+description: Secret boundaries, scanner policy, and incident response for security-sensitive files.
+globs:
+  - "SECRETS_POLICY.md"
+  - "DEPLOYMENT.md"
+  - ".github/workflows/**"
+  - "**/.env*"
+  - "**/*config*"
+  - "**/*secret*"
+  - "**/*deploy*"
+  - "**/*gradle*"
+  - "**/*key*"
+  - "**/*token*"
+alwaysApply: false
+---
+
+# Security Rules
+
+## Secret Boundary
+
+- Never request, print, store, summarize, or persist plaintext secrets.
+- Never commit secrets to version control, even in private repositories.
+- Never disable scanners, branch protection, CI gates, or deployment
+  safeguards to make a task pass.
+
+## If a Secret Is Exposed
+
+1. Stop all other work immediately.
+2. Redact the value in all responses and outputs.
+3. Record the issue in CURRENT_TASKS.md as P0 without the plaintext.
+4. Follow SECRETS_POLICY.md rotation procedures.
+5. If committed to Git, treat the history as compromised.
+
+## Scanner Policy
+
+- Run Gitleaks when any of these change: env files, config, CI workflows,
+  deployment scripts, signing config, credentials docs.
+- Run TruffleHog for full-history scans during audits or incident response.
+- Any verified finding blocks the current task until resolved.
+
+## Environment Files
+
+- .env files must be in .gitignore.
+- Use .env.example with placeholder values for documentation.
+- Never commit .env files with real values.
+
+## Credential Rotation
+
+Credential rotation is P0. Requirements:
+- Explicit human instruction.
+- Written rollback plan.
+- Verification that the service works with the new credential.
+- Old credential revocation.
+- WORKLOG.md entry.
+
+## Risk Tier
+
+Security changes are P0. Do not proceed without explicit human approval.

@@ -1,0 +1,54 @@
+---
+description: Mission loop, bounded passes, checkpoint discipline, and handoff protocol.
+globs:
+  - "AGENTS.md"
+  - "AI_DIRECTIVES.md"
+  - "CURRENT_TASKS.md"
+  - "WORKLOG.md"
+  - "HANDOFF.md"
+alwaysApply: true
+---
+
+# Workflow and Checkpoints
+
+## Mission Loop
+
+1. Orient: read root records and handoff state.
+2. Define: confirm the active goal and acceptance criteria.
+3. Research: inspect code and record findings in RESEARCH.md.
+4. Plan: identify risk tier, impacted contracts, and verification.
+5. Execute: bounded passes with checkpoints.
+6. Verify: run proportional verification.
+7. Close: update records, docs, and HANDOFF.md.
+
+## Bounded Passes
+
+- Do not modify more than 3 hand-edited code files in one pass.
+- After each pass, check the diff and run targeted verification.
+- Docs-only and mechanical generated changes may exceed 3 files after a
+  status/diff checkpoint.
+
+## Checkpoint Discipline
+
+Before edits:
+- Run git status --short --branch.
+- Run CodeGraph or rg for the task area.
+- Confirm the active goal.
+
+After each pass:
+- Review git diff.
+- Run the smallest meaningful test, build, or scan.
+- Update WORKLOG.md with what changed, what was checked, and what is next.
+
+## Handoff
+
+Before stopping or switching context:
+- Update HANDOFF.md with current state, what is done, what remains, risks,
+  and the next best action.
+- Update CURRENT_TASKS.md with completion or blocker state.
+- Ensure WORKLOG.md has the latest checkpoint.
+
+## No Auto-Commit
+
+Do not stage, commit, tag, push, release, or deploy unless the user
+explicitly asks.

@@ -1,0 +1,342 @@
+---
+import ExperienceDemo from "../components/ExperienceDemo";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">A wiser way to ask</p>
+        <h1>
+          对命运<span>好奇</span><br /><span class="hero-sentence"
+            >不等于把人生<span class="mobile-break"><br /></span>交给命运</span
+          >
+        </h1>
+        <p>
+          Nexa 以八字理解出发点，以易经理解此刻的变化，再由 AI
+          把答案背后的“为什么”说清楚。它不替你预言人生，只陪你看见仍然存在的选择。
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#experience">先体验一次</a>
+          <a class="button button-light" href="/how-it-works"
+            >看看 Nexa 如何思考</a
+          >
+        </div>
+        <div class="hero-note">
+          <span>不制造恐惧</span><span>不下宿命判决</span><span
+            >每个结论都能追问</span
+          >
+        </div>
+      </div>
+      <div
+        class="orbit-stage"
+        aria-label="Nexa 橙蓝几何冥想主视觉，表达从问题到理解与选择"
+      >
+        <img
+          class="product-hero-image"
+          src="/brand/nexa-start-hero.webp"
+          width="780"
+          height="1151"
+          alt=""
+          fetchpriority="high"
+        />
+        <img
+          class="product-hero-star"
+          src="/brand/nexa-active-star.svg"
+          width="34"
+          height="34"
+          alt=""
+        />
+        <div class="insight-card glass-card">
+          <span class="insight-label">NEXA · INSIGHT 01</span>
+          <blockquote>
+            你真正想确认的，也许不是“会不会发生”，而是“我是否已经准备好面对答案”。
+          </blockquote>
+          <div class="insight-path">
+            <span>问题</span><i></i><span>理解</span><i></i><span>选择</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Start with your question</p>
+      <h2 class="section-title">
+        人不是因为迷信而来，<br />只是有些事，真的很难一个人想清楚。
+      </h2>
+      <p class="section-lede">
+        一个好的入口，不该先索取生日、邮箱和付款。它应该先理解：此刻究竟是哪一件事，让你停在这里。
+      </p>
+      <div class="question-grid">
+        <a class="question-card warm-card" href="#experience">
+          <span class="question-index">01 · RELATIONSHIP</span>
+          <div>
+            <h3>这段关系，还值得我继续靠近吗？</h3><p>
+              分清真实回应、内心期待，以及害怕失去所制造的声音。
+            </p>
+          </div>
+          <span class="question-arrow">↗</span>
+        </a>
+        <a class="question-card warm-card" href="#experience">
+          <span class="question-index">02 · DIRECTION</span>
+          <div>
+            <h3>眼前两条路，哪一条更像我？</h3><p>
+              不是替你选，而是看清每条路正在要求你承担什么。
+            </p>
+          </div>
+          <span class="question-arrow">↗</span>
+        </a>
+        <a class="question-card warm-card" href="#experience">
+          <span class="question-index">03 · TIMING</span>
+          <div>
+            <h3>我该再等等，还是现在开始行动？</h3><p>
+              让时机从神秘答案，变成你能够观察和验证的信号。
+            </p>
+          </div>
+          <span class="question-arrow">↗</span>
+        </a>
+      </div>
+      <aside class="quiz-invite" aria-label="30 道题免费测试入口">
+        <div>
+          <span>想多看见一点？</span>
+          <h3>用 30 道轻量问题，看看你面对不确定时最依赖哪一种力量。</h3>
+          <p>约 4 分钟，完成后立即看到免费结果；无需生日、邮箱或注册。</p>
+        </div>
+        <a class="button button-primary" href="/quiz">进入独立测试 →</a>
+      </aside>
+    </div>
+  </section>
+
+  <section id="experience" class="section experience-section">
+    <div class="container experience-shell">
+      <div class="experience-aside">
+        <p class="eyebrow">60-second experience</p>
+        <h2 class="section-title">在注册之前，先看看我们会怎样回答。</h2>
+        <p class="section-lede">
+          三道简单选择，得到一个可以马上带走的观察角度。这里不读取命盘，也不保存你的答案。
+        </p>
+      </div>
+      <ExperienceDemo client:load />
+      <noscript
+        ><p>
+          微体验需要启用 JavaScript。你仍可以<a href="/how-it-works"
+            >阅读 Nexa 的方法说明</a
+          >，不必提交任何资料。
+        </p></noscript
+      >
+    </div>
+  </section>
+
+  <section class="section method-section">
+    <div class="container">
+      <p class="eyebrow">More than a list</p>
+      <h2 class="section-title">
+        传统知识很庞杂。<br />好的技术，是让它不再乱跑。
+      </h2>
+      <p class="section-lede">
+        我们把八字、易学中的关系与变化整理成可计算、可检验、可解释的结构，再让
+        AI 把复杂推理翻译成你听得懂的话。
+      </p>
+      <div class="method-grid">
+        <article class="method-card warm-card">
+          <span class="method-icon"></span><span class="method-number">01</span
+          ><h3>结构化传统体系</h3><p>
+            不是关键词排序，也不是把古籍句子随机拼接。先明确概念、关系、条件与边界。
+          </p>
+        </article>
+        <article class="method-card warm-card">
+          <span class="method-icon"></span><span class="method-number">02</span
+          ><h3>计算复杂关系</h3><p>
+            以严谨的数学建模组织多层变量，让相互影响可以稳定地进入同一套推理过程。
+          </p>
+        </article>
+        <article class="method-card warm-card">
+          <span class="method-icon"></span><span class="method-number">03</span
+          ><h3>让 AI 解释原因</h3><p>
+            AI
+            不只输出结论，也负责回答“为什么”、比较不同解释，并把选择权交还给你。
+          </p>
+        </article>
+      </div>
+      <div style="margin-top: 32px">
+        <a class="button button-secondary" href="/whitepaper"
+          >了解方法与研究边界 →</a
+        >
+      </div>
+    </div>
+  </section>
+
+  <section class="section answer-section">
+    <div class="container">
+      <p class="eyebrow">An answer you can question</p>
+      <h2 class="section-title">
+        一个负责任的答案，<br />应该允许你继续追问。
+      </h2>
+      <div class="answer-grid">
+        <article class="answer-card">
+          <span class="answer-kicker">它看见了什么</span><h3>
+            先说依据，<br />再给判断。
+          </h3><p>
+            哪些关系支持这个结论，哪些信息仍不充分，不把推测伪装成事实。
+          </p>
+        </article>
+        <article class="answer-card highlight">
+          <span class="answer-kicker">它如何面对不确定</span><h3>
+            给出可能性，<br />也说清边界。
+          </h3><p>
+            传统体系的一致性、计算的正确性与现实世界的有效性，是三件需要分别说明的事。
+          </p>
+        </article>
+        <article class="answer-card">
+          <span class="answer-kicker">它把什么留给你</span><h3>
+            不是判决，<br />而是下一步。
+          </h3><p>
+            把建议缩小成可观察、可撤回、可验证的行动，让你仍然是自己人生的主角。
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="story-band">
+    <div class="container">
+      <blockquote>
+        命是出发点，易是变化；<span>人生，发生在两者之间。</span>
+      </blockquote>
+      <p>
+        Nexa
+        诞生于一个很朴素的愿望：当你在人生的岔路口寻找线索，愿意认真听见你的困惑，把能说清的依据说清，也把最后的决定留给你。
+      </p>
+      <div style="margin-top: 32px">
+        <a class="button button-secondary" href="/story">读我们的故事 →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Trust is part of the product</p>
+      <h2 class="section-title">信任，不该藏在页脚的小字里。</h2>
+      <div class="trust-grid">
+        <div class="trust-item">
+          <strong>不靠恐惧成交</strong><span
+            >不使用灾难预言、虚假稀缺和焦虑倒计时。</span
+          >
+        </div>
+        <div class="trust-item">
+          <strong>付费之前说清楚</strong><span
+            >价格、续费、权益和取消方式都应该被看见。</span
+          >
+        </div>
+        <div class="trust-item">
+          <strong>敏感信息最小化</strong><span
+            >只在提供功能确有需要时，才请求相应信息。</span
+          >
+        </div>
+        <div class="trust-item">
+          <strong>不替代专业帮助</strong><span
+            >健康、法律、财务等高风险事项请咨询专业人士。</span
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="container faq-shell">
+      <div>
+        <p class="eyebrow">Questions deserve clarity</p>
+        <h2 class="section-title">在开始之前，<br />先把重要的事说清楚。</h2>
+      </div>
+      <div class="faq-list">
+        <details open>
+          <summary>Nexa 的结果是科学证明吗？<span>＋</span></summary>
+          <p>
+            不是。数学和计算帮助我们稳定地组织复杂关系，但不代表现代科学已经证明命理具有现实预测效度。我们会区分计算正确、传统体系一致和现实有效性。
+          </p>
+        </details>
+        <details>
+          <summary>Nexa 会替我做决定吗？<span>＋</span></summary>
+          <p>
+            不会。Nexa
+            提供解释、可能性和可以验证的下一步；关系、职业、健康与财务等重要决定，仍需要你结合现实证据与专业意见。
+          </p>
+        </details>
+        <details>
+          <summary>首页的体验会上传我的选择吗？<span>＋</span></summary>
+          <p>
+            不会。当前三步体验只在浏览器内运行，不需要账号，也不保存你的答案。它用于展示
+            Nexa 的回答方式，不是真实命理计算。
+          </p>
+        </details>
+        <details>
+          <summary>为什么强调每个结论都能追问？<span>＋</span></summary>
+          <p>
+            因为只给答案很容易制造依赖。能追问“依据是什么、哪里不确定、如何验证”，才能让结果真正帮助理解，而不是变成新的判决。
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="container">
+      <h2>把那件一直悬着的事，<br />认真说出来。</h2>
+      <p>你不需要先相信命运。只需要对自己的问题诚实一点。</p>
+      <a class="button button-primary" href="#experience">从 60 秒体验开始</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .quiz-invite {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 44px;
+    margin-top: 26px;
+    padding: 30px 34px;
+    border: 1px solid rgba(114, 93, 255, 0.2);
+    border-radius: 22px;
+    background:
+      radial-gradient(
+        circle at 85% 30%,
+        rgba(217, 71, 141, 0.13),
+        transparent 34%
+      ),
+      rgba(114, 93, 255, 0.065);
+  }
+  .quiz-invite span {
+    color: var(--violet);
+    font-size: 0.74rem;
+    font-weight: 760;
+    letter-spacing: 0.1em;
+  }
+  .quiz-invite h3 {
+    max-width: 720px;
+    margin: 9px 0 0;
+    font-family: var(--font-heading);
+    font-size: clamp(1.35rem, 2.4vw, 2rem);
+    line-height: 1.5;
+  }
+  .quiz-invite p {
+    margin: 8px 0 0;
+    color: var(--ink-soft);
+  }
+  .quiz-invite .button {
+    white-space: nowrap;
+  }
+  @media (max-width: 760px) {
+    .quiz-invite {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 26px 24px;
+    }
+    .quiz-invite .button {
+      width: 100%;
+    }
+  }
+</style>

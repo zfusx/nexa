@@ -1,0 +1,237 @@
+---
+import AcquisitionQuiz from "../components/AcquisitionQuiz";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="面对不确定时，你最依赖哪一种力量？｜Nexa"
+  description="完成 30 道轻量自我观察题，免费了解你面对不确定时更自然的倾向，以及值得补上的一小步。"
+>
+  <div class="quiz-page">
+    <section class="quiz-hero">
+      <div class="container quiz-heading">
+        <div>
+          <p class="eyebrow">NEXA · 免费自我观察</p>
+          <h1>面对不确定时，<br />你最依赖哪一种力量？</h1>
+        </div>
+        <div class="quiz-lede">
+          <p>
+            30 道轻量问题，约 4
+            分钟。先得到一份完整的免费结果，再决定是否继续了解 Nexa。
+          </p>
+          <div>
+            <span>无需注册</span><span>不收集生日</span><span>答案不上传</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="quiz-shell">
+      <div class="container quiz-layout">
+        <aside>
+          <p class="eyebrow">一次只回答一题</p>
+          <h2>不用寻找“正确答案”。</h2>
+          <p>
+            请选择更像此刻自己的描述。结果用于帮助你整理问题，不给人格定型，也不会预测现实事件。
+          </p>
+          <dl>
+            <div><dt>01</dt><dd>完成 30 道题</dd></div>
+            <div><dt>02</dt><dd>立即查看五项分布</dd></div>
+            <div><dt>03</dt><dd>带走一条具体行动建议</dd></div>
+          </dl>
+        </aside>
+        <div>
+          <AcquisitionQuiz client:load />
+          <noscript>
+            <p class="noscript-note">
+              这项体验需要启用 JavaScript。你仍可以<a href="/how-it-works"
+                >阅读 Nexa 的方法说明</a
+              >。
+            </p>
+          </noscript>
+        </div>
+      </div>
+    </section>
+    <section class="quiz-boundary">
+      <div class="container">
+        <p class="eyebrow">演示边界</p>
+        <h2>先交付价值，再提出下一步。</h2>
+        <p>
+          当前页面演示“广告 → 独立测试 → 免费结果 →
+          正式产品入口”的完整前端路径。它不调用命理服务、不建立账户、不收费，也没有广告追踪；生产版需在真实接口、数据政策与付费权益确认后接入。
+        </p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  :global(body) {
+    min-width: 0;
+    background: var(--night);
+  }
+  .quiz-page {
+    position: relative;
+    overflow: hidden;
+    color: var(--ink);
+    background: var(--night);
+  }
+  .quiz-page::before {
+    position: absolute;
+    z-index: 0;
+    top: 72px;
+    right: max(20px, calc((100vw - 1180px) / 2));
+    width: min(430px, 38vw);
+    aspect-ratio: 780 / 1050;
+    pointer-events: none;
+    opacity: 0.32;
+    background: url("/brand/nexa-start-hero.webp") center 38% / cover no-repeat;
+    mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 100%);
+    content: "";
+  }
+  .quiz-page > section {
+    position: relative;
+    z-index: 1;
+  }
+  .quiz-hero {
+    padding: 150px 0 74px;
+  }
+  .quiz-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(330px, 0.75fr);
+    align-items: end;
+    gap: 70px;
+  }
+  .quiz-heading .eyebrow,
+  .quiz-layout .eyebrow,
+  .quiz-boundary .eyebrow {
+    color: var(--violet-light);
+  }
+  h1 {
+    margin: 24px 0 0;
+    font-family: var(--font-heading);
+    font-size: clamp(2.15rem, 4vw, 3.6rem);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -0.035em;
+  }
+  .quiz-lede > p {
+    margin: 0;
+    color: #d3cbe4;
+    font-size: 1.08rem;
+    line-height: 1.9;
+  }
+  .quiz-lede > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 24px;
+  }
+  .quiz-lede span {
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 99px;
+    color: rgba(255, 255, 255, 0.64);
+    font-size: 0.76rem;
+  }
+  .quiz-shell {
+    padding: 40px 0 100px;
+  }
+  .quiz-layout {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    gap: 70px;
+  }
+  .quiz-layout aside {
+    padding-top: 30px;
+  }
+  .quiz-layout aside h2,
+  .quiz-boundary h2 {
+    margin: 20px 0 0;
+    font-family: var(--font-heading);
+    font-size: 1.65rem;
+    font-weight: 540;
+  }
+  .quiz-layout aside > p:not(.eyebrow) {
+    color: var(--ink-soft);
+    line-height: 1.85;
+  }
+  .quiz-layout dl {
+    margin-top: 34px;
+  }
+  .quiz-layout dl div {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    padding: 14px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .quiz-layout dt {
+    color: var(--violet-light);
+    font-size: 0.74rem;
+  }
+  .quiz-layout dd {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.84rem;
+  }
+  .noscript-note {
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .noscript-note a {
+    text-decoration: underline;
+  }
+  .quiz-boundary {
+    padding: 80px 0 100px;
+    color: var(--ink);
+    background: var(--paper);
+  }
+  .quiz-boundary h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+  }
+  .quiz-boundary > div > p:last-child {
+    max-width: 780px;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    line-height: 1.9;
+  }
+  @media (max-width: 850px) {
+    .quiz-heading,
+    .quiz-layout {
+      grid-template-columns: 1fr;
+      gap: 38px;
+    }
+    .quiz-layout aside {
+      display: none;
+    }
+    .quiz-layout dl {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+  }
+  @media (max-width: 560px) {
+    .quiz-page::before {
+      top: 66px;
+      right: -90px;
+      width: 330px;
+      opacity: 0.2;
+    }
+    .quiz-hero {
+      padding: 118px 0 48px;
+    }
+    h1 {
+      font-size: clamp(1.85rem, 8vw, 2.4rem);
+    }
+    .quiz-shell {
+      padding-top: 20px;
+      padding-bottom: 70px;
+    }
+    .quiz-layout dl {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .quiz-boundary {
+      padding-block: 58px;
+    }
+  }
+</style>
