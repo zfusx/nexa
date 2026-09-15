@@ -8,9 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT/'output/handoff'
 OUT.mkdir(parents=True, exist_ok=True)
 root_files = [
-    'README.md', 'AGENTS.md', 'AI_DIRECTIVES.md', 'PROJECT_CONTEXT.md',
-    'GOALS.md', 'CURRENT_TASKS.md', 'WORKLOG.md', 'DECISIONS.md', 'RESEARCH.md',
-    'HANDOFF.md', 'API_CONTRACT.md', 'DEPLOYMENT.md', 'SECRETS_POLICY.md',
+    'README.md', 'API_CONTRACT.md', 'DEPLOYMENT.md', 'SECRETS_POLICY.md',
     'TOOLING_GUIDE.md', 'package.json', 'package-lock.json', 'astro.config.mjs',
     'tsconfig.json', '.gitignore', '.prettierignore', '.prettierrc.json',
     'output/pdf/Nexa公众白皮书_v0.1.pdf',
@@ -32,9 +30,9 @@ for path in paths:
     assert not {'white_paper','othersite','research_artifacts','node_modules','.git'}.intersection(path.relative_to(ROOT).parts)
 manifest = {
     'version': 'v0.5',
-    'date': '2026-09-14',
+    'date': '2026-09-15',
     'entry': 'docs/handoff/README.md',
-    'scope': '设计与工程演示基线；真实账户、支付、核心计算尚未接入；白皮书 v0.2 专业版审阅稿',
+    'scope': '面向产品、设计与工程团队的演示基线；不含 AI 协作文档、内部算法、竞品素材、真实账户、支付或核心计算；白皮书 v0.2 为专业版审阅稿',
     'files': [{'path':p.relative_to(ROOT).as_posix(),'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in paths],
 }
 manifest_bytes = (json.dumps(manifest,ensure_ascii=False,indent=2)+'\n').encode()

@@ -106,3 +106,17 @@ white_paper/
 # Generated handoff history is local-only; keep only the current reviewed package
 output/handoff/*
 !output/handoff/Nexa团队交付_v0.5.zip
+
+# Local AI collaboration records; never publish in the human-facing repository
+.cursor/
+.rulesrc.yaml
+AGENTS.md
+AI_DIRECTIVES.md
+CURRENT_TASKS.md
+DECISIONS.md
+GOALS.md
+HANDOFF.md
+PROJECT_CONTEXT.md
+RESEARCH.md
+WORKLOG.md
+docs/templates/
