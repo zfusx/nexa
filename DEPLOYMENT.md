@@ -20,8 +20,8 @@
 | 目标域名     | `https://main.zfis.net`                           |
 | 目标主机     | `main.zfis.net`，SSH 端口 2028                    |
 | 实际运行方式 | Astro 静态文件 + Caddy 2                          |
-| 当前 release | `/var/www/main.zfis.net/releases/20260915-011248` |
-| 回滚 release | `/var/www/main.zfis.net/releases/20260914-234320` |
+| 当前 release | `/var/www/main.zfis.net/releases/20260919-123749` |
+| 回滚 release | `/var/www/main.zfis.net/releases/20260915-011248` |
 | 入口软链接   | `/var/www/main.zfis.net/current`                  |
 | Caddy 配置   | `/etc/caddy/sites-enabled/main.zfis.net.caddy`    |
 | 主配置备份   | `/etc/caddy/Caddyfile.pre-nexa-20260914-171851`   |
@@ -47,7 +47,7 @@
 
 ```bash
 ssh root@main.zfis.net -p 2028
-test ! -e /var/www/main.zfis.net/current.rollback-20260915-011248 && test ! -L /var/www/main.zfis.net/current.rollback-20260915-011248 && ln -s releases/20260914-234320 /var/www/main.zfis.net/current.rollback-20260915-011248 && mv -Tf /var/www/main.zfis.net/current.rollback-20260915-011248 /var/www/main.zfis.net/current
+test ! -e /var/www/main.zfis.net/current.rollback-20260919-123749 && test ! -L /var/www/main.zfis.net/current.rollback-20260919-123749 && ln -s releases/20260915-011248 /var/www/main.zfis.net/current.rollback-20260919-123749 && mv -Tf /var/www/main.zfis.net/current.rollback-20260919-123749 /var/www/main.zfis.net/current
 ```
 
 Caddy 的 `root` 始终指向 `current`，仅切换静态目录不需要重载服务。若需要撤销首次 Caddy 接入，应先离线验证备份配置，再恢复 `/etc/caddy/Caddyfile.pre-nexa-20260914-171851` 并 reload。
@@ -89,6 +89,14 @@ Caddy 的 `root` 始终指向 `current`，仅切换静态目录不需要重载�
 ## 全局导航短标题发布记录（2026-09-15 01:15）
 
 桌面导航改为“体验 / 测评 / 原理 / 关于 / 白皮书 / 开始体验”，页脚同步使用“测评”，不改变页面路由和首页正文。发布前只读核实当前为 `20260914-234320` 且 Caddy 配置有效；新 release `20260915-011248` 上传校验后原子切换。26 个 HTTPS 文件 SHA256 全部与本地一致，八路由 200、未知路径 404、Caddy active。`20260914-234320` 保留为直接回滚目标。
+
+## 白皮书现代数学方法总览发布记录（2026-09-19 12:37）
+
+两版白皮书新增“使用什么数学、解决什么问题”的总览：v0.1 使用普通读者语言，v0.2 明确组成数据分析、条件与图模型、线性代数与路径几何、模糊逻辑与稳健性、概率随机过程、统计校准以及信息量与可解释 AI。公开稿继续排除内部规则表、参数、权重、阈值和实现路径。
+
+源码先以提交 `ddae742` 推送至 `zfusx/nexa` 的 `main`。部署前只读核实当前 release 为 `20260915-011248`、直接回滚目录存在、Caddy 配置有效且磁盘剩余 17G；新 release `20260919-123749` 上传后 checksum dry-run 无差异，再原子切换。
+
+发布后 26 个 HTTPS 文件与本地构建 SHA256 全部一致，八路由 200、未知路径 404、两份 PDF 均为 `application/pdf`，页面显示 2026-09-19、专业版 12 页和新增数学总览；Caddy active，线上浏览器视觉复核通过。`20260915-011248` 保留为直接回滚目标。
 
 ## 禁止事项
 
