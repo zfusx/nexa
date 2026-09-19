@@ -2,7 +2,7 @@
 
 ## 白皮书构建与验证
 
-公开内容源为 `docs/whitepaper/Nexa公众白皮书_v0.2.md`，不读取 `white_paper/` 私有资料。
+公开内容源为 `docs/whitepaper/Nexa公众白皮书_v0.1.md` 与 `docs/whitepaper/Nexa公众白皮书_v0.2.md`，不读取 `white_paper/` 私有资料。
 
 ```sh
 /Users/fireparty/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 scripts/build_whitepaper.py
@@ -11,9 +11,9 @@ npm run build
 npx prettier --plugin=prettier-plugin-astro --check src/pages/whitepaper.astro 'src/pages/[slug].astro'
 ```
 
-构建 PDF 使用 reportlab，校验使用 pypdf。字体默认 macOS STHeiti Light 与 Songti；其他机器通过 `NEXA_BODY_FONT` / `NEXA_TITLE_FONT` 指定已授权中文 TTF/TTC。输出是 `output/pdf/Nexa公众白皮书_v0.2.pdf`；该文件随网页构建进入带指纹资产目录。
+构建 PDF 使用 reportlab，校验使用 pypdf。字体默认 macOS STHeiti Light 与 Songti；其他机器通过 `NEXA_BODY_FONT` / `NEXA_TITLE_FONT` 指定已授权中文 TTF/TTC。输出是 `output/pdf/Nexa公众白皮书_v0.1.pdf` 与 `output/pdf/Nexa公众白皮书_v0.2.pdf`；两份文件随网页构建进入带指纹资产目录。
 
-PDF 修改后须使用 Poppler 渲染所有页，人工检查再交付。当前工具在 Codex runtime 的 `dependencies/native/poppler/poppler/bin/`。校验脚本检查 9–15 页范围、117 个当前正文块覆盖、网页单 H1/七章、锚点、下载文件一致及基础敏感模式；不能替代人工保密审查或模型验证。
+PDF 修改后须使用 Poppler 渲染两版全部页面，人工检查再交付。当前工具在 Codex runtime 的 `dependencies/native/poppler/poppler/bin/`。校验脚本分别检查两版 Markdown 与 PDF 正文覆盖，并检查专业版网页单 H1/七章、锚点、下载文件一致及基础敏感模式；不能替代人工保密审查或模型验证。
 
 v0.3 已用 `.prettierrc.json` 加载 `prettier-plugin-astro`，可直接运行 `npm run format:check`。`node scripts/check_site.mjs` 检查八路由、站内资源/锚点、交接文档链接及基础发布边界。
 
